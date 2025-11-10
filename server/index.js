@@ -51,10 +51,17 @@ const storage = multer.diskStorage({
 
 // Add file filter for PDFs
 const fileFilter = (req, file, cb) => {
-  if (file.mimetype === 'application/pdf') {
+  const allowedTypes = [
+    'application/pdf',
+    'application/x-pdf',
+    'application/acrobat',
+    'applications/pdf',
+    'application/octet-stream'
+  ];
+  if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error('Only PDF files are allowed!'), false);
+    cb(new Error(`Invalid file type: ${file.mimetype}. Only PDF files are allowed!`), false);
   }
 };
 
@@ -83,7 +90,7 @@ app.post('/upload/pdf', upload.single('pdf'), async (req, res) => {
       destination: req.file.destination,
       path: req.file.path
     }));
-
+    console.log(" uploaded and enqueu the pdf")
     return res.json({
       message: "uploaded and enqueued",
       file: {
@@ -108,6 +115,8 @@ app.post('/chat', async (req, res) => {
     }
 
     console.log("User query:", query);
+
+    
 
     // Step 1: Generate embedding for the user query
     console.log("Generating query embedding...");
@@ -209,6 +218,8 @@ app.post('/chat/stream', async (req, res) => {
   try {
     const { query } = req.body;
 
+    console.log("user quesry is ",query);
+
     if (!query || query.trim() === '') {
       return res.status(400).json({ error: 'Query is required' });
     }
@@ -220,6 +231,7 @@ app.post('/chat/stream', async (req, res) => {
 
     // Generate embedding and search
     const queryEmbedding = await embeddingModel({ docs: [query] });
+
     const searchResults = await qdrant.search("pdf-with-chat", {
       vector: queryEmbedding[0],
       limit: 5,

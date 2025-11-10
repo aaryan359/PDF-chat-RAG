@@ -91,4 +91,7 @@ docker-compose up -d
 # 5. Start the server
 npm run dev
 
+# start the worker
+npm run dev:worker
+
 ```
