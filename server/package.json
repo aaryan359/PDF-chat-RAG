@@ -1,12 +1,15 @@
 {
-  "name": "server",
+  "name": "@pdf-rag/api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon index.js",
-    "dev:worker": "node --watch worker.js"
+    "dev:worker": "node --watch worker.js",
+    "build": "node --check index.js && node --check worker.js",
+    "start": "node index.js",
+    "start:worker": "node worker.js"
   },
   "keywords": [],
   "author": "",
@@ -31,7 +34,6 @@
     "groq-sdk": "^0.33.0",
     "multer": "^2.0.2",
     "nodemon": "^3.1.10",
-    "pdf": "link:@langchain/document_loaders/fs/pdf",
     "pdf-lib": "^1.17.1",
     "pdf-parse": "^2.2.0",
     "pdfjs-dist": "^5.4.296"

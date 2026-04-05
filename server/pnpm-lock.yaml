@@ -62,9 +62,6 @@ importers:
       nodemon:
         specifier: ^3.1.10
         version: 3.1.10
-      pdf:
-        specifier: link:@langchain/document_loaders/fs/pdf
-        version: link:@langchain/document_loaders/fs/pdf
       pdf-lib:
         specifier: ^1.17.1
         version: 1.17.1
