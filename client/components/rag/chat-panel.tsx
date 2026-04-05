@@ -195,9 +195,12 @@ export function ChatPanel({ document, topK }: ChatPanelProps) {
         ) : null}
 
         {messages.map((message) => (
-          <article key={message.id} className={`flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}>
+          <article
+            key={message.id}
+            className={`flex items-start gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}
+          >
             {message.role === "assistant" ? (
-              <div className="mt-1 rounded-2xl bg-slate-950 p-2 text-white">
+              <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-950 text-white">
                 <Bot className="h-4 w-4" />
               </div>
             ) : null}
@@ -209,7 +212,7 @@ export function ChatPanel({ document, topK }: ChatPanelProps) {
                     : "bg-slate-950 text-white"
                 }`}
               >
-                {message.content}
+                <p className="whitespace-pre-wrap break-words">{message.content}</p>
               </div>
               <div className="mt-2 flex items-center justify-between gap-3 px-1">
                 <span className="text-xs text-slate-400">{formatTime(message.createdAt)}</span>
@@ -240,14 +243,16 @@ export function ChatPanel({ document, topK }: ChatPanelProps) {
                           {(source.score * 100).toFixed(0)}% match
                         </span>
                       </summary>
-                      <p className="mt-3 text-sm leading-6 text-slate-600">{source.text}</p>
+                      <p className="mt-3 whitespace-pre-wrap break-words text-sm leading-6 text-slate-600">
+                        {source.text}
+                      </p>
                     </details>
                   ))}
                 </div>
               ) : null}
             </div>
             {message.role === "user" ? (
-              <div className="mt-1 rounded-2xl bg-cyan-500 p-2 text-white">
+              <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-500 text-white">
                 <User className="h-4 w-4" />
               </div>
             ) : null}
@@ -255,12 +260,12 @@ export function ChatPanel({ document, topK }: ChatPanelProps) {
         ))}
 
         {streamingContent ? (
-          <article className="flex gap-3">
-            <div className="mt-1 rounded-2xl bg-slate-950 p-2 text-white">
+          <article className="flex items-start gap-3">
+            <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-950 text-white">
               <Bot className="h-4 w-4" />
             </div>
             <div className="max-w-3xl rounded-[28px] border border-slate-200 bg-white px-5 py-4 text-sm leading-7 text-slate-800">
-              {streamingContent}
+              <p className="inline whitespace-pre-wrap break-words">{streamingContent}</p>
               <span className="ml-1 inline-block h-4 w-2 animate-pulse rounded-full bg-cyan-500" />
             </div>
           </article>

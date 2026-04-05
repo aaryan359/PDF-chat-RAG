@@ -130,9 +130,15 @@ export function RagDashboard() {
       <section className="panel-surface flex items-center justify-between gap-4 py-4">
         <div>
           <h1 className="text-xl font-semibold text-slate-950 sm:text-2xl">PDF Workspace</h1>
-          <p className="mt-1 text-sm text-slate-600">Upload, index, and chat with up to 10 PDFs per batch.</p>
+          <p className="mt-1 text-sm text-slate-600">Upload, index, and chat with grounded document context.</p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
+          <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700">
+            Upload PDFs
+          </span>
+          <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">
+            Grounded answers
+          </span>
           <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">
             Ready {stats.ready}
           </span>

@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEvent, DragEvent, useRef, useState } from "react";
-import { FileUp, Loader2, ShieldCheck, Sparkles } from "lucide-react";
+import { FileUp, Loader2 } from "lucide-react";
 
 interface DocumentUploadCardProps {
   disabled?: boolean;
@@ -58,14 +58,11 @@ export function DocumentUploadCard({ disabled, onUpload, onError }: DocumentUplo
   }
 
   return (
-    <section className="panel-surface space-y-4">
+    <section className="panel-surface space-y-3">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="eyebrow">Ingestion</p>
-          <h2 className="text-2xl font-semibold text-slate-950">Upload PDFs</h2>
-        </div>
-        <div className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">
-          Grounded answers
+          <h2 className="text-xl font-semibold text-slate-950">Upload PDFs</h2>
         </div>
       </div>
 
@@ -82,7 +79,7 @@ export function DocumentUploadCard({ disabled, onUpload, onError }: DocumentUplo
         }}
         onDrop={onDrop}
         disabled={disabled || uploading}
-        className={`relative flex min-h-44 w-full flex-col items-center justify-center rounded-[24px] border border-dashed px-5 py-6 text-center transition ${
+        className={`relative flex min-h-32 w-full flex-col items-center justify-center rounded-[24px] border border-dashed px-5 py-5 text-center transition ${
           dragging
             ? "border-cyan-500 bg-cyan-50"
             : "border-slate-300 bg-white hover:border-cyan-400 hover:bg-cyan-50/60"
@@ -94,14 +91,9 @@ export function DocumentUploadCard({ disabled, onUpload, onError }: DocumentUplo
         <h3 className="text-lg font-semibold text-slate-950">
           {uploading ? "Queuing documents..." : "Drop up to 10 PDFs or browse"}
         </h3>
-        <p className="mt-2 max-w-md text-sm leading-6 text-slate-600">
-          Files are queued for indexing with strict document isolation.
+        <p className="mt-1 max-w-md text-sm leading-6 text-slate-600">
+          PDF only. Files are indexed asynchronously.
         </p>
-        <div className="mt-3 flex flex-wrap items-center justify-center gap-2 text-xs text-slate-500">
-          <span className="rounded-full border border-slate-200 px-3 py-1">PDF only</span>
-          <span className="rounded-full border border-slate-200 px-3 py-1">Async processing</span>
-          <span className="rounded-full border border-slate-200 px-3 py-1">Source citations</span>
-        </div>
       </button>
 
       <input
@@ -112,23 +104,6 @@ export function DocumentUploadCard({ disabled, onUpload, onError }: DocumentUplo
         className="hidden"
         onChange={onChange}
       />
-
-      <div className="grid gap-3 sm:grid-cols-2">
-        <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-          <div className="mb-2 flex items-center gap-2 text-sm font-medium text-slate-900">
-            <ShieldCheck className="h-4 w-4 text-emerald-600" />
-            Safe ingestion flow
-          </div>
-          <p className="text-sm text-slate-600">Uploads are staged, queued, and indexed before querying.</p>
-        </div>
-        <div className="rounded-3xl border border-slate-200 bg-slate-50 p-4">
-          <div className="mb-2 flex items-center gap-2 text-sm font-medium text-slate-900">
-            <Sparkles className="h-4 w-4 text-cyan-600" />
-            Production-ready retrieval
-          </div>
-          <p className="text-sm text-slate-600">Tune retrieval depth and stream grounded answers.</p>
-        </div>
-      </div>
     </section>
   );
 }

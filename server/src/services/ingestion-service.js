@@ -28,7 +28,10 @@ export class IngestionService {
     const fileBuffer = await readFile(document.storagePath);
     const parser = new PDFParse({ data: fileBuffer });
     const parsedPdf = await parser.getText();
-    await parser.destroy();
+    // `destroy` is not available in every pdf-parse release.
+    if (typeof parser.destroy === "function") {
+      await parser.destroy();
+    }
     const normalizedText = sanitizeText(parsedPdf.text);
 
     if (!normalizedText) {

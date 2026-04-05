@@ -3,7 +3,6 @@ import {
   ArrowLeft,
   Blocks,
   Bot,
-  ChartNoAxesColumn,
   CircleDollarSign,
   Database,
   FileText,
@@ -136,7 +135,7 @@ export default function AboutPage() {
               </p>
             </div>
             <p className="mt-4">
-              Important: this is not a "no vectors" system. We still rely on vector search for retrieval quality. The
+              Important: this is not a &quot;no vectors&quot; system. We still rely on vector search for retrieval quality. The
               optimization is ownership and cost control over embedding generation.
             </p>
           </section>
