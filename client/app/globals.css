@@ -112,13 +112,20 @@ body {
 }
 
 .doc-page {
-  font-family: "Merriweather", "Georgia", "Times New Roman", serif;
+  color: #f8fafc;
+  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(148, 163, 184, 0.16), transparent 28%),
+    radial-gradient(circle at 88% 8%, rgba(148, 163, 184, 0.11), transparent 32%),
+    linear-gradient(180deg, #020617 0%, #000000 56%, #020617 100%);
 }
 
 .doc-page h1,
 .doc-page h2,
 .doc-page h3 {
+  color: #ffffff;
   font-family: "Sora", "Avenir Next", "Segoe UI", sans-serif;
+  letter-spacing: -0.02em;
 }
 
 .doc-page ol {
@@ -127,4 +134,155 @@ body {
 
 .doc-page li {
   padding-left: 0.2rem;
+}
+
+.doc-hero {
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  background:
+    linear-gradient(145deg, rgba(2, 6, 23, 0.98), rgba(15, 23, 42, 0.98)),
+    linear-gradient(130deg, rgba(255, 255, 255, 0.06), transparent 60%);
+}
+
+.doc-surface {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(2, 6, 23, 0.8);
+  border-radius: 32px;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.45);
+}
+
+.doc-kpi {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(248, 250, 252, 0.28);
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.78rem;
+  color: rgba(241, 245, 249, 0.95);
+}
+
+.doc-toc {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 24px;
+  background: rgba(2, 6, 23, 0.78);
+  padding: 1rem;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
+}
+
+.doc-toc-link {
+  display: block;
+  border-radius: 10px;
+  padding: 0.42rem 0.55rem;
+  color: #cbd5e1;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.doc-toc-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.doc-section h2 {
+  margin: 0;
+  font-size: 1.45rem;
+}
+
+.doc-intro h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.doc-intro p {
+  margin-top: 0.8rem;
+  max-width: 66ch;
+}
+
+.doc-section p,
+.doc-section li {
+  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #cbd5e1;
+}
+
+.doc-section ol {
+  margin-top: 0.8rem;
+  padding-left: 1.2rem;
+}
+
+.doc-grid-cards {
+  display: grid;
+  gap: 0.8rem;
+}
+
+@media (min-width: 768px) {
+  .doc-grid-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.doc-card {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.66);
+  padding: 1rem;
+}
+
+.doc-card h3 {
+  margin-top: 0.7rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.doc-card p {
+  margin-top: 0.35rem;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: #cbd5e1;
+}
+
+.doc-spec {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.72) 0%, rgba(2, 6, 23, 0.72) 100%);
+  padding: 1rem;
+}
+
+.doc-spec p {
+  margin: 0;
+  padding: 0.35rem 0;
+  color: #cbd5e1;
+}
+
+.doc-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.66);
+  padding: 0.85rem 0.95rem;
+}
+
+.doc-note p {
+  margin: 0;
+}
+
+.doc-endcap {
+  border-top: 1px solid rgba(148, 163, 184, 0.22);
+  padding-top: 1.2rem;
+}
+
+.doc-code {
+  margin-top: 0.7rem;
+  border-radius: 14px;
+  border: 1px solid rgba(15, 23, 42, 0.2);
+  background: #020617;
+  color: #e2e8f0;
+  font-family: "IBM Plex Mono", "SFMono-Regular", monospace;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  padding: 0.85rem 0.95rem;
+  white-space: pre-wrap;
 }
